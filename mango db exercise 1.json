@@ -1,0 +1,51 @@
+use dugsiiye
+
+// 2. Insert 3 students
+db.students.insertMany([
+  {
+    name: "Ahmed Ali",
+    age: 20,
+    email: "ahmed@gmail.com",
+    courses: ["MongoDB", "JavaScript"]
+  },
+  {
+    name: "Amina Hassan",
+    age: 22,
+    email: "amina@gmail.com",
+    courses: ["HTML", "CSS", "React"]
+  },
+  {
+    name: "Mohamed Omar",
+    age: 21,
+    email: "mohamed@gmail.com",
+    courses: ["Python", "MySQL"]
+  }
+])
+
+// 3. Find all students
+db.students.find()
+
+// 4. Update Ahmed's email
+db.students.updateOne(
+  { name: "Ahmed Ali" },
+  { $set: { email: "ahmedali@gmail.com" } }
+)
+
+// 5. Delete one student
+db.students.deleteOne({ name: "Mohamed Omar" })
+
+// 6. Insert student with nested address
+db.students.insertOne({
+  name: "Fatima Yusuf",
+  age: 19,
+  email: "fatima@gmail.com",
+  courses: ["MongoDB", "Database"],
+  address: {
+    city: "Mogadishu",
+    district: "Hodan",
+    street: "KM4"
+  }
+})
+
+7. Find all students again;
+db.students.find()
