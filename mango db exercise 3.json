@@ -1,0 +1,41 @@
+use("schoolDB");
+
+db.students.insertMany([
+    { name: "Sagal", email: "sagal@gmail.com", age: 23, course: "React", points: 90 },
+    { name: "Samira", email: "samira@yahoo.com", age: 21, course: "Node.js", points: 88 },
+    { name: "Ahmed", email: "ahmed@gmail.com", age: 25, course: "React", points: 95 },
+    { name: "Sahra", email: "sahra@example.edu", age: 18, course: "Node.js", points: 80 },
+    { name: "Mohamed", email: "mohamed@gmail.com", age: 22, course: "Python", points: 85 },
+    { name: "Abdi", email: "abdi@yahoo.com", age: 24, course: "React", points: 92 },
+    { name: "Hassan", email: "hassan@example.edu", age: 20, course: "Python", points: 87 },
+    { name: "Said", email: "said@gmail.com", age: 26, course: "Node.js", points: 89 }
+]);
+
+// 1
+db.students.find({ age: { $gt: 22 } });
+
+// 2
+db.students.find({ course: "React" });
+
+// 3
+db.students.find({ name: { $regex: "^S", $options: "i" } });
+
+// 4
+db.students.find({ age: { $in: [18, 21] } });
+
+// 5
+db.students.find({ email: { $not: /gmail\.com$/i } });
+
+// 6
+db.students.find({ course: "React", age: { $gt: 20 } });
+
+// 7
+db.students.find({ course: { $in: ["React", "Node.js"] } });
+
+// 8 BONUS
+db.students.find({
+    $or: [
+        { name: { $regex: "x", $options: "i" } },
+        { email: { $regex: "\\.edu$", $options: "i" } }
+    ]
+});
